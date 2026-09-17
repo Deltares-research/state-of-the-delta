@@ -26,7 +26,7 @@ _Figure 3: [caption]_
 
 ## Reports
 
-[A brief description describing the retrieved reference context related to the coastal dynamics and seabed morphodynamics in the area of interest. Include inline references using APA format.]
+[A brief description describing the retrieved reference context related to the state of the coast in the area of interest. Include inline references using APA format.]
 
 ## Conclusion
 
