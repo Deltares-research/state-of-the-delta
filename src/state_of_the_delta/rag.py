@@ -1,5 +1,7 @@
+import os
 from pathlib import Path
 
+import requests
 from dllmforge.rag_preprocess_documents import PDFLoader, TextChunker
 from dllmforge.rag_search_and_response import AzureOpenAIEmbeddingModel, IndexManager, Retriever
 from tqdm import tqdm
@@ -47,3 +49,12 @@ def get_retriever(index_name: str, embedding_model: str = "text-embedding-3-larg
     retriever = Retriever(embedding_model=model, index_name=index_name)
 
     return retriever
+
+
+def get_chunks_from_deltares_kennisbank(query: str, index_name: str):
+    url = f"{os.environ['DELTARES_SEARCH_ENDPOINT']}/indexes/{index_name}/docs/search?api-version={os.environ['DELTARES_API_VERSION']}"
+    headers = {"Content-Type": "application/json", "api-key": os.environ["DELTARES_SEARCH_API_KEY"]}
+    body = {"search": query, "top": 10, "count": True}
+    response = requests.post(url, headers=headers, json=body)
+    chunks = [value["chunk"] for value in response.json()["value"]]
+    return chunks

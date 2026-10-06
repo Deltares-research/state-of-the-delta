@@ -6,18 +6,24 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "deltaeo>=2026.7.6",
+    #"deltares-ai-platform-sdk",
     "dllmforge[api]",
     "dotenv>=0.9.9",
     "markdown>=3.10.3",
+    "markdown-pdf>=1.13.3",
     "matplotlib-map-utils>=4.1.1",
+    "mlflow>=3.16.1",
     "openai>=2.54.0",
-    "resplotlib>=0.0.1",
+    #"resplotlib>=0.0.1",
+    "playwright>=1.63.0",
+    "weasyprint>=70.0",
 ]
 
 [tool.uv.sources]
 resplotlib = { git = "https://github.com/Ruben-White/resplotlib.git", rev = "main" }
 deltaeo = { git = "https://github.com/Deltares-research/deltaeo.git", rev = "reloaded" }
 dllmforge = { git = "https://github.com/Deltares-research/DLLMForge.git" }
+deltares-ai-platform-sdk = { git = "https://github.com/Deltares-research/ai-platform-mlops.git", subdirectory = "packages/deltares_ai_platform_sdk", rev = "main" }
 
 [build-system]
 requires = ["uv_build>=0.12.6,<0.13.0"]
